@@ -6,7 +6,7 @@ def main():
     for pop in ['CEU/', 'FIN/', 'GBR/', 'TSI/', 'YRI/']:
         tpmDF = pandas.DataFrame();
         fpkmDF = pandas.DataFrame();
-        saveDir = "./Downloads/" + pop;
+        saveDir = "./Downloads/Genes/" + pop;
         for filename in os.listdir(saveDir):
             if filename.endswith(".tsv"):
                 filePath = os.path.join(saveDir, filename);
@@ -15,9 +15,9 @@ def main():
                 fpkmDF[filename[:-4]] = df["FPKM"];
         fpkmDF.index = df["gene_id"];
         tpmDF.index = df["gene_id"];
-        tpmDF.to_csv("./Downloads/" + pop + f"{pop.rstrip('/')}_TPM.tsv", sep="\t", index=True);
+        tpmDF.to_csv("./Downloads/Genes/" + pop + f"{pop.rstrip('/')}_TPM.tsv", sep="\t", index=True);
         print(f"{pop} done on TPM");
-        fpkmDF.to_csv("./Downloads/" + pop + f"{pop.rstrip('/')}_FPKM.tsv", sep="\t", index=True);
+        fpkmDF.to_csv("./Downloads/Genes/" + pop + f"{pop.rstrip('/')}_FPKM.tsv", sep="\t", index=True);
         print(f"{pop} done on FPKM");
 
 

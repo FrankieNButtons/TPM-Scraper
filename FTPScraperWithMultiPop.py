@@ -45,7 +45,7 @@ def download_isoform_results(pop, subdir, output_dir):
     soup = BeautifulSoup(r.text, "html.parser")
     iso_href = None
     for a in soup.find_all("a", href=True):
-        if a["href"].endswith("isoforms.results.tsv"):
+        if a["href"].endswith("genes.results.tsv"):
             iso_href = a["href"]
             break
     if not iso_href:
@@ -101,6 +101,6 @@ def main(output_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="1000Genomes CEU isoforms.results.tsv 爬虫")
-    parser.add_argument("--output-dir", default=f"./Downloads", help="本地保存目录")
+    parser.add_argument("--output-dir", default=f"./Downloads/Genes", help="本地保存目录")
     args = parser.parse_args()
     main(args.output_dir)
